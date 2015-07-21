@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Hi</title>
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/dist/styles.css">
+</head>
+<body>
+  <header id="header" class="header" role="banner">
+    {% include 'partials/_header.twig' %}
+  </header>
+
+  <div class="header-background"></div>
+
+  <main id="content" role="main">
+    <div class="main-content">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <script src="/dist/application.js"></script>
+</body>
+</html>
