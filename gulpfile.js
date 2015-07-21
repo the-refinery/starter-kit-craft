@@ -8,8 +8,6 @@ var gutil = require('gulp-util');
 var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
 var imagemin = require('gulp-imagemin');
-var rev = require('gulp-rev');
-var revReplace = require('gulp-rev-replace');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var addsrc = require('gulp-add-src');
@@ -67,13 +65,7 @@ gulp.task('js', function () {
   ];
 
   var lib = [
-    './bower_components/baseline-modernizr/baseline-modernizr.js',
-    './bower_components/jquery/dist/jquery.js',
-    './bower_components/underscore/underscore.js',
-    './bower_components/respondto/src/respondto.js',
-    './bower_components/fancybox/source/jquery.fancybox.js',
-    './bower_components/fancybox/source/helpers/jquery.fancybox-media.js',
-    './bower_components/parsleyjs/dist/parsley.js'
+    './bower_components/jquery/dist/jquery.js'
   ];
 
   return gulp.src(modules)
@@ -110,24 +102,6 @@ gulp.task('images', function() {
 // without any processing.
 gulp.task('public', function() {
   return gulp.src(paths.public)
-    .pipe(gulp.dest(paths.dist));
-});
-
-// Rename files with revisions
-gulp.task('revisionRename', ['build'], function(){
-  return gulp.src(['dist/**/*.css', 'dist/**/*.js'])
-    .pipe(rev())
-    .pipe(gulp.dest(paths.dist))
-    .pipe(rev.manifest())
-    .pipe(gulp.dest(paths.dist));
-});
-
-// Replace CSS/JS refs with revved versions
-gulp.task('revision', ['revisionRename'], function(){
-  var manifest = gulp.src(paths.dist + '/rev-manifest.json');
-
-  return gulp.src(paths.dist + '/**/*.html')
-    .pipe(revReplace({manifest: manifest}))
     .pipe(gulp.dest(paths.dist));
 });
 
