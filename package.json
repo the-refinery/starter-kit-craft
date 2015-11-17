@@ -1,5 +1,10 @@
 {
   "name": "starter-kit-craft",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-refinery/starter-kit-craft.git"
+  },
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "bower": "^1.4.1",
