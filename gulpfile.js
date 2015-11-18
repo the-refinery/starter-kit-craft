@@ -37,8 +37,7 @@ gulp.task('templates', function() {
 // CSS
 gulp.task('sass', function() {
   var includePaths = [
-    './bower_components/bourbon/app/assets/stylesheets',
-    './bower_components/normalize-scss'
+    './node_modules/normalize.css'
   ];
 
   var sassOptions = {
@@ -70,7 +69,7 @@ gulp.task('js', function () {
   ];
 
   var lib = [
-    './bower_components/jquery/dist/jquery.js'
+    './node_modules/jquery/dist/jquery.js'
   ];
 
   return gulp.src(modules)
@@ -88,8 +87,6 @@ gulp.task('js', function () {
 // Images
 gulp.task('images', function() {
   var images = [
-    './bower_components/fancybox/source/**/*.png',
-    './bower_components/fancybox/source/**/*.gif',
     paths.images
   ];
 
