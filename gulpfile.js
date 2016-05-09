@@ -27,8 +27,7 @@ var isProduction = env.toLowerCase() === 'production';
 
 // Templates
 gulp.task('templates', function() {
-  var YOUR_LOCALS = {};
-  return gulp.src([paths.templates, '!./source/templates/**/_*.twig'])
+  return gulp.src(paths.templates)
     .pipe(twig({}))
     .pipe(connect.reload())
     .pipe(gulp.dest(paths.dist))
