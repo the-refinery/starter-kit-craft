@@ -29,8 +29,8 @@ var isProduction = env.toLowerCase() === 'production';
 gulp.task('templates', function() {
   return gulp.src(paths.templates)
     .pipe(twig({}))
-    .pipe(connect.reload())
     .pipe(gulp.dest(paths.dist))
+    .pipe(connect.reload());
 });
 
 // CSS
@@ -56,8 +56,8 @@ gulp.task('sass', function() {
       cascade: false
     }))
     .pipe(isProduction ? gutil.noop() : sourcemaps.write())
-    .pipe(connect.reload())
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dist))
+    .pipe(connect.reload());
 });
 
 // JS
@@ -79,8 +79,8 @@ gulp.task('js', function () {
     .pipe(concat("application.js"))
     .pipe(isProduction ? gutil.noop() : sourcemaps.write("."))
     .pipe(isProduction ? uglify() : gutil.noop())
-    .pipe(connect.reload())
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dist))
+    .pipe(connect.reload());
 });
 
 // Images
@@ -95,7 +95,8 @@ gulp.task('images', function() {
       svgoPlugins: [{removeViewBox: false}],
       use: []
     }))
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dist))
+    .pipe(connect.reload());
 });
 
 // Public
@@ -103,7 +104,8 @@ gulp.task('images', function() {
 // without any processing.
 gulp.task('public', function() {
   return gulp.src(paths.public)
-    .pipe(gulp.dest(paths.dist));
+    .pipe(gulp.dest(paths.dist))
+    .pipe(connect.reload());
 });
 
 // Server
