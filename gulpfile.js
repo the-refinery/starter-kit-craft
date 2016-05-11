@@ -55,8 +55,8 @@ gulp.task('sass', function() {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(isProduction ? gutil.noop() : sourcemaps.write())
-    .pipe(gulp.dest(paths.dist))
+    .pipe(isProduction ? gutil.noop() : sourcemaps.write("."))
+    .pipe(gulp.dest(paths.dist + '/stylesheets'))
     .pipe(connect.reload());
 });
 
@@ -79,7 +79,7 @@ gulp.task('js', function () {
     .pipe(concat("application.js"))
     .pipe(isProduction ? gutil.noop() : sourcemaps.write("."))
     .pipe(isProduction ? uglify() : gutil.noop())
-    .pipe(gulp.dest(paths.dist))
+    .pipe(gulp.dest(paths.dist + '/javascripts'))
     .pipe(connect.reload());
 });
 
@@ -95,7 +95,7 @@ gulp.task('images', function() {
       svgoPlugins: [{removeViewBox: false}],
       use: []
     }))
-    .pipe(gulp.dest(paths.dist))
+    .pipe(gulp.dest(paths.dist + '/images'))
     .pipe(connect.reload());
 });
 
